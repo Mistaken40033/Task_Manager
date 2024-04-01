@@ -31,32 +31,40 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="formModalLabel">Add Task</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="false">&times;</span>
+            <button type="button" class="btn btn-close" aria-label="Close">
+             
             </button>
           </div>
           <div class="modal-body">
-            <form id="Task">
+            <form id="taskContainer">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                  <input id="Task-Title-input" type="text" class="form-control" placeholder="Task Title"
-                    aria-label="Project Name" </li>
-
+                  <input 
+                  id="Task-Title-input"
+                  type="text"
+                  class="form-control" 
+                  placeholder="Task Title"
+                  aria-label="Task Title"
+                />
                 <li class="list-group-item">
                   <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
                     id="taskDueDate" />
                 </li>
               </ul>
-              <input id="Tast-Description-input" type="text" class="form-control" placeholder="Task Description"
-                aria-label="Task Description" </li>
-              </ul>
+              <input 
+              id="Tast-Description-input" 
+              type="text" class="form-control" 
+              placeholder="Task Description"
+              aria-label="Task Description"
+             />
+            
           </div>
           <div class="card-footer">
-            <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="submit" class="btn btn-success">
               Add Task
             </button>
           </div>
-
+        <!-- </form> -->
         </div>
       </div>
     </div>
@@ -105,6 +113,7 @@
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
   <script src="assets/script.js"></script>
+  
 </body>
 
 </html>
