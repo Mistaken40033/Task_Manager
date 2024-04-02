@@ -26,48 +26,36 @@
     </div>
 
     <!-- Todo: Create a modal with a form to add tasks -->
-    <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="formModalLabel">Add Task</h5>
-            <button type="button" class="btn btn-close" aria-label="Close">
-             
-            </button>
+
+<!-- Modal for adding tasks -->
+<div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="formModalLabel">Add Task</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="taskForm">
+          <div class="mb-3">
+            <label for="taskTitle" class="form-label">Task Title</label>
+            <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title" required>
           </div>
-          <div class="modal-body">
-            <form id="taskContainer">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <input 
-                  id="Task-Title-input"
-                  type="text"
-                  class="form-control" 
-                  placeholder="Task Title"
-                  aria-label="Task Title"
-                />
-                <li class="list-group-item">
-                  <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
-                    id="taskDueDate" />
-                </li>
-              </ul>
-              <input 
-              id="Tast-Description-input" 
-              type="text" class="form-control" 
-              placeholder="Task Description"
-              aria-label="Task Description"
-             />
-            
+          <div class="mb-3">
+            <label for="taskDueDate" class="form-label">Task Due Date</label>
+            <input type="date" class="form-control" id="taskDueDate" required>
           </div>
-          <div class="card-footer">
-            <button type="submit" class="btn btn-success">
-              Add Task
-            </button>
+          <div class="mb-3">
+            <label for="taskDescription" class="form-label">Task Description</label>
+            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
           </div>
-        <!-- </form> -->
-        </div>
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
+
 
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
@@ -94,6 +82,8 @@
         <div id="done" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">Done</h2>
+
+            
           </div>
           <div class="card-body bg-light">
             <div id="done-cards"></div>

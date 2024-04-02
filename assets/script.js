@@ -4,46 +4,46 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-    let cards = JSON.parse(localStorage.getItem('cards'));
-    if (!cards) {
-        cards = []
-    }
+    return nextId++;
+}
 
     // Todo: create a function to create a task card
     function createTaskCard(taskName, taskDescription) {
         const taskCard = document.createElement('div');
         taskCard.classList.add('task-card');
-        const heading = document.createElement('h3');
+    
+        const heading = document.createElement('h2');
         heading.textContent = taskName;
+    
         const description = document.createElement('p');
         description.textContent = taskDescription;
+    
         taskCard.appendChild(heading);
         taskCard.appendChild(description);
-        const taskContainer = document.getElementById('taskContainer');
-        taskContainer.appendChild(taskCard);
+    
+        return taskCard;
     }
 
 
     // Todo: create a function to render the task list and make cards draggable
     function renderTaskList(tasks) {
         const taskContainer = document.getElementById('taskContainer');
-        taskContainer.innerHTML = '';
-
+        taskContainer.HTMLElement;  // Clear existing content
+    
         tasks.forEach(task => {
             const taskCard = createTaskCard(task.name, task.description);
             taskContainer.appendChild(taskCard);
         });
     }
+
     function taskCardsDraggable() {
         const taskCards = document.querySelectorAll('.task-card');
-
-        taskCards.forEach(card => {
-            card.setAttribute('draggable', 'true');
-            // Set the card to be draggable
-
-            card.addEventListener('dragstart', function (event) {
-                event.dataTransfer.setData('text/plain', card.id);
-                // Set the data to be transferred when dragging
+        
+        taskCards.forEach(taskCard => {
+            taskCard.setAttribute('draggable', true);
+            
+            taskCard.addEventListener('dragstart', (event) => {
+                event.dataTransfer.setData('text/plain', '');
             });
         });
     }
@@ -74,14 +74,15 @@ function generateTaskId() {
 
     // Todo: create a function to handle deleting a task
     function handleDeleteTask(event) {
-        const taskId = event.target.dataset.taskId; 
+        const taskId = event.target.dataset.taskId;
+        
         const taskIndex = taskList.findIndex(task => task.id === taskId);
-    
+        
         if (taskIndex === -1) {
             console.error('Task not found for deletion.');
             return;
         }
-    
+        
         taskList.splice(taskIndex, 1);
         localStorage.setItem('tasks', JSON.stringify(taskList));
         updateTaskBoard(taskList);
@@ -105,7 +106,7 @@ function generateTaskId() {
     
 
     // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
-    $(document).ready(function () {
+    $(document).ready(function() {
         renderTaskList(JSON.parse(localStorage.getItem("tasks")));
 
         $(".task-card").on("dragstart", function (event) {
@@ -121,4 +122,6 @@ function generateTaskId() {
             event.preventDefault();
         });
 
-        $("#due-date").datepicker();
+        $("#dueDate").datepicker();
+    });
+    
