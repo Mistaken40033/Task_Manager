@@ -19,7 +19,7 @@ function createTaskCard(task) {
     const body = $("<div>").addClass("card-body")
     const description = $("<p>").addClass("card-text").text(task.description)
     const dueDate = $("<p>").addClass("card-text").text(task.dueDate)
-    const deleteBtn = $("<button>").addClass("btn btn-danger delete").text("delete").attr("data-id", task.id)
+    const deleteBtn = $("<button>").addClass("btn btn-danger custom-delete-btn deleteBtn").text("delete").attr("data-taskId", task.id)
     deleteBtn.on("click", handleDeleteTask)
     if (task.status !== "done") {
         const today = dayjs()
@@ -38,8 +38,7 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList(tasks) {
-    // const taskContainer = document.getElementById('taskContainer');
-    // taskContainer.document;
+
     $("#todo-cards").empty()
     $("#in-progress-cards").empty()
     $("#done-cards").empty()
@@ -109,10 +108,14 @@ function handleDeleteTask(event) {
 }
 
 // Add event listeners to dynamically created task cards for deletion
-document.addEventListener('click', function (event) {
-    if (event.target.classList.contains('delete-task-btn')) {
-        const taskId = event.target.dataset.taskId;
-        handleDeleteTask(taskId);
+const taskId = $(this).attr('data-task-id');
+let tasks = JSON.parse(localStorage.getItem('tasks'))
+console.log(taskId);
+
+tasks.forEach((task) => {
+    if (task.id == taskId) {
+        console.log(task.id)
+      tasks.splice(tasks.indexOf(task), 1);
     }
 });
 
@@ -129,7 +132,7 @@ function handleDrop(event, ui) {
 $(document).ready(function () {
     renderTaskList();
 
-    $("#taskForm").on("submit", handleAddTask);
+    $("#taskForm").on("submit", handleAddTask); 
 
     $(".task-card").on("dragstart", function (event) {
         event.originalEvent.dataTransfer.setData("text/plain", $(this).data("taskId"));
