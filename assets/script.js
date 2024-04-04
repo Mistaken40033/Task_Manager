@@ -19,7 +19,7 @@ function createTaskCard(task) {
     const body = $("<div>").addClass("card-body")
     const description = $("<p>").addClass("card-text").text(task.description)
     const dueDate = $("<p>").addClass("card-text").text(task.dueDate)
-    const deleteBtn = $("<button>").addClass("btn btn-danger custom-delete-btn deleteBtn").text("delete").attr("data-taskId", task.id)
+    const deleteBtn = $("<button>").addClass("btn btn-danger delete").text("delete").attr("data-id", task.id)
     deleteBtn.on("click", handleDeleteTask)
     if (task.status !== "done") {
         const today = dayjs()
@@ -98,24 +98,20 @@ function handleDeleteTask(event) {
     const taskIndex = taskList.findIndex(task => task.id === taskId);
 
     if (taskIndex === -1) {
-        console.error('Task not found for deletion.');
+        // console.error('Task not found for deletion.');
         return;
     }
 
     taskList.splice(taskIndex, 1);
-    localStorage.setItem('tasks', JSON.stringify(taskList));
+    // localStorage.setItem('tasks', JSON.stringify(taskList));
     updateTaskBoard(taskList);
 }
 
 // Add event listeners to dynamically created task cards for deletion
-const taskId = $(this).attr('data-task-id');
-let tasks = JSON.parse(localStorage.getItem('tasks'))
-console.log(taskId);
-
-tasks.forEach((task) => {
-    if (task.id == taskId) {
-        console.log(task.id)
-      tasks.splice(tasks.indexOf(task), 1);
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('delete-task-btn')) {
+        const taskId = event.target.dataset.taskId;
+        handleDeleteTask(taskId);
     }
 });
 
