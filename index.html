@@ -27,36 +27,36 @@
 
     <!-- Todo: Create a modal with a form to add tasks -->
 
-<!-- Modal for adding tasks -->
-<div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="formModalLabel">Add Task</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="taskForm">
-          <div class="mb-3">
-            <label for="taskTitle" class="form-label">Task Title</label>
-            <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title" required>
+
+    <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="formModalLabel">Add Task</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="mb-3">
-            <label for="taskDueDate" class="form-label">Task Due Date</label>
-            <input type="date" class="form-control" id="taskDueDate" required>
+          <div class="modal-body">
+            <form id="taskForm">
+              <div class="mb-3">
+                <label for="taskTitle" class="form-label">Task Title</label>
+                <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title" required>
+              </div>
+              <div class="mb-3">
+                <label for="taskDueDate" class="form-label">Task Due Date</label>
+                <input type="date" class="form-control" id="taskDueDate" required>
+              </div>
+              <div class="mb-3">
+                <label for="taskDescription" class="form-label">Task Description</label>
+                <textarea class="form-control" id="taskDescription" rows="3"
+                  placeholder="Enter task description"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
           </div>
-          <div class="mb-3">
-            <label for="taskDescription" class="form-label">Task Description</label>
-            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Add Task</button>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
+    <style>#draggable { width: 150px; height: 150px; padding: 0.5em; }</style>
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
         <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
@@ -83,7 +83,7 @@
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">Done</h2>
 
-            
+
           </div>
           <div class="card-body bg-light">
             <div id="done-cards"></div>
@@ -103,7 +103,7 @@
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
   <script src="assets/script.js"></script>
-  
+
 </body>
 
 </html>
